@@ -112,34 +112,44 @@ function calculator(number = 0) {
   }
   return {
     sum(...args) {
-      let result = number;
-      for (const arg of args) {
-        result += arg;
-      }
+      // let result = number;
+      // for (const arg of args) {
+      //   result += arg;
+      // }
+      let result = args.reduce((sum, arg) => sum + arg, number);
       return result;
     },
     dif(...args) {
-      let result = number;
-      for (const arg of args) {
-        result -= arg;
-      }
+      // let result = number;
+      // for (const arg of args) {
+      //   result -= arg;
+      // }
+      let result = args.reduce((dif, arg) => dif - arg, number);
       return result;
     },
     div(...args) {
-      let result = number;
-      for (const arg of args) {
+      // let result = number;
+      // for (const arg of args) {
+      //   if (arg === 0) {
+      //     throw new Error('division by 0');
+      //   }
+      //   result /= arg;
+      // }
+      let result = args.reduce((div, arg) => {
         if (arg === 0) {
           throw new Error('division by 0');
-        }
-        result /= arg;
-      }
+        };
+        return div / arg;
+      }, 
+      number);
       return result;
     },
     mul(...args) {
-      let result = number;
-      for (const arg of args) {
-        result *= arg;
-      }
+      // let result = number;
+      // for (const arg of args) {
+      //   result *= arg;
+      // }
+      let result = args.reduce((mul, arg) => mul * arg, number);
       return result;
     },
   }
